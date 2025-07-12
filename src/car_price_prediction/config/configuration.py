@@ -3,6 +3,7 @@ import os
 from pathlib import Path
 from car_price_prediction.utils.common import read_yaml, create_directories
 from car_price_prediction.entity.config_entity import (DataIngestionConfig,
+                                                       PreprocessingConfig,
                                                        PrepareBaseModelConfig,
                                                        PrepareCallbacksConfig,
                                                        TrainingConfig,
@@ -37,6 +38,17 @@ class ConfigurationManager:
         return data_ingestion_config
     
 
+    def get_preprocessing_config(self) -> PreprocessingConfig:
+        preprocessing = self.config.preprocessing
+        params = self.params
+
+        preprocessing_config = PreprocessingConfig(
+            target_column=preprocessing.target_column,
+            test_size=params.TEST_SIZE,
+            random_state=params.RANDOM_STATE
+        )
+
+        return preprocessing_config
 
     
     def get_prepare_base_model_config(self) -> PrepareBaseModelConfig:
@@ -48,11 +60,7 @@ class ConfigurationManager:
             root_dir=Path(config.root_dir),
             base_model_path=Path(config.base_model_path),
             updated_base_model_path=Path(config.updated_base_model_path),
-            params_image_size=self.params.IMAGE_SIZE,
             params_learning_rate=self.params.LEARNING_RATE,
-            params_include_top=self.params.INCLUDE_TOP,
-            params_weights=self.params.WEIGHTS,
-            params_classes=self.params.CLASSES
         )
 
         return prepare_base_model_config

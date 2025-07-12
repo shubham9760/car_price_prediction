@@ -1,0 +1,129 @@
+[2025-07-11 14:38:49,928: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2025-07-11 14:38:49,938: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-07-11 14:38:49,938: INFO: common: created directory at: artifacts]
+[2025-07-11 14:38:49,938: INFO: common: created directory at: artifacts/data_ingestion]
+[2025-07-11 14:39:13,577: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2025-07-11 14:39:13,577: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-07-11 14:39:13,577: INFO: common: created directory at: artifacts]
+[2025-07-11 14:39:13,577: INFO: common: created directory at: artifacts/data_ingestion]
+[2025-07-11 14:40:11,191: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2025-07-11 14:40:11,194: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-07-11 14:40:11,196: INFO: common: created directory at: artifacts]
+[2025-07-11 14:40:11,197: INFO: common: created directory at: artifacts/data_ingestion]
+[2025-07-11 14:42:23,515: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2025-07-11 14:42:23,521: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-07-11 14:42:23,523: INFO: common: created directory at: artifacts]
+[2025-07-11 14:42:23,527: INFO: common: created directory at: artifacts/data_ingestion]
+[2025-07-11 14:44:21,134: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2025-07-11 14:44:21,143: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-07-11 14:44:21,146: INFO: common: created directory at: artifacts]
+[2025-07-11 14:44:21,148: INFO: common: created directory at: artifacts/data_ingestion]
+[2025-07-11 14:45:16,589: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2025-07-11 14:45:16,595: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-07-11 14:45:16,598: INFO: common: created directory at: artifacts]
+[2025-07-11 14:45:16,599: INFO: common: created directory at: artifacts/data_ingestion]
+[2025-07-11 14:46:23,520: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2025-07-11 14:46:23,523: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-07-11 14:46:23,524: INFO: common: created directory at: artifacts]
+[2025-07-11 14:46:23,526: INFO: common: created directory at: artifacts/data_ingestion]
+[2025-07-11 14:47:06,268: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2025-07-11 14:47:06,270: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-07-11 14:47:06,270: INFO: common: created directory at: artifacts]
+[2025-07-11 14:47:06,270: INFO: common: created directory at: artifacts/data_ingestion]
+[2025-07-11 14:48:44,466: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2025-07-11 14:48:44,466: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-07-11 14:48:44,466: INFO: common: created directory at: artifacts]
+[2025-07-11 14:48:44,466: INFO: common: created directory at: artifacts/data_ingestion]
+[2025-07-11 14:48:46,913: INFO: 883321432: artifacts/data_ingestion/data.zip downloaded with the following info: 
+Connection: close
+Content-Length: 439363
+Cache-Control: max-age=300
+Content-Security-Policy: default-src 'none'; style-src 'unsafe-inline'; sandbox
+Content-Type: application/zip
+ETag: "f02129725677995f2b90e6feee5c59cb0cc92525384c3ad1f4f2bc5010823136"
+Strict-Transport-Security: max-age=31536000
+X-Content-Type-Options: nosniff
+X-Frame-Options: deny
+X-XSS-Protection: 1; mode=block
+X-GitHub-Request-Id: F2D7:93E75:76352:16D2F3:6870D6EC
+Accept-Ranges: bytes
+Date: Fri, 11 Jul 2025 09:18:37 GMT
+Via: 1.1 varnish
+X-Served-By: cache-bom4731-BOM
+X-Cache: MISS
+X-Cache-Hits: 0
+X-Timer: S1752225518.635914,VS0,VE255
+Vary: Authorization,Accept-Encoding
+Access-Control-Allow-Origin: *
+Cross-Origin-Resource-Policy: cross-origin
+X-Fastly-Request-ID: 810ed0c11726aeec981174ca12ab8e41935184d2
+Expires: Fri, 11 Jul 2025 09:23:37 GMT
+Source-Age: 0
+
+]
+[2025-07-11 14:48:46,948: INFO: 883321432: Extracted zip file to artifacts/data_ingestion]
+[2025-07-11 15:49:33,321: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2025-07-11 15:49:33,337: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-07-11 15:49:33,337: INFO: common: created directory at: artifacts]
+[2025-07-11 15:49:33,337: INFO: common: created directory at: artifacts/prepare_base_model]
+[2025-07-11 15:50:23,489: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2025-07-11 15:50:23,494: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-07-11 15:50:23,498: INFO: common: created directory at: artifacts]
+[2025-07-11 15:50:23,498: INFO: common: created directory at: artifacts/prepare_base_model]
+[2025-07-12 10:32:05,751: INFO: font_manager: generated new fontManager]
+[2025-07-12 10:36:56,673: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2025-07-12 10:36:56,690: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-07-12 10:36:56,690: INFO: common: created directory at: artifacts]
+[2025-07-12 10:38:03,162: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2025-07-12 10:38:03,164: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-07-12 10:38:03,166: INFO: common: created directory at: artifacts]
+[2025-07-12 10:42:23,246: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2025-07-12 10:42:23,248: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-07-12 10:42:23,251: INFO: common: created directory at: artifacts]
+[2025-07-12 10:43:33,226: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2025-07-12 10:43:33,230: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-07-12 10:43:33,232: INFO: common: created directory at: artifacts]
+[2025-07-12 10:45:15,881: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2025-07-12 10:45:15,884: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-07-12 10:45:15,885: INFO: common: created directory at: artifacts]
+[2025-07-12 10:46:31,690: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2025-07-12 10:46:31,697: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-07-12 10:46:31,698: INFO: common: created directory at: artifacts]
+[2025-07-12 10:48:19,223: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2025-07-12 10:48:19,226: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-07-12 10:48:19,228: INFO: common: created directory at: artifacts]
+[2025-07-12 10:48:19,230: INFO: common: created directory at: artifacts/data_ingestion]
+[2025-07-12 10:48:25,734: INFO: common: Data preprocessing completed successfully.]
+[2025-07-12 10:48:25,755: INFO: common: created directory at: artifacts/prepare_base_model]
+[2025-07-12 10:52:04,845: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2025-07-12 10:52:04,845: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-07-12 10:52:04,845: INFO: common: created directory at: artifacts]
+[2025-07-12 10:52:04,845: INFO: common: created directory at: artifacts/data_ingestion]
+[2025-07-12 10:52:12,799: INFO: common: Data preprocessing completed successfully.]
+[2025-07-12 10:52:12,859: INFO: common: created directory at: artifacts/prepare_base_model]
+[2025-07-12 10:56:01,048: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2025-07-12 10:56:01,051: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-07-12 10:56:01,053: INFO: common: created directory at: artifacts]
+[2025-07-12 10:56:01,054: INFO: common: created directory at: artifacts/data_ingestion]
+[2025-07-12 10:56:07,546: INFO: common: Data preprocessing completed successfully.]
+[2025-07-12 10:56:07,632: INFO: common: created directory at: artifacts/prepare_base_model]
+[2025-07-12 10:59:39,454: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2025-07-12 10:59:39,470: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-07-12 10:59:39,472: INFO: common: created directory at: artifacts]
+[2025-07-12 10:59:39,472: INFO: common: created directory at: artifacts/data_ingestion]
+[2025-07-12 11:07:10,668: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2025-07-12 11:07:10,668: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-07-12 11:07:10,668: INFO: common: created directory at: artifacts]
+[2025-07-12 11:07:10,668: INFO: common: created directory at: artifacts/data_ingestion]
+[2025-07-12 11:07:10,728: ERROR: common: Error during preprocessing: ['price']]
+[2025-07-12 11:07:47,050: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2025-07-12 11:07:47,052: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-07-12 11:07:47,052: INFO: common: created directory at: artifacts]
+[2025-07-12 11:07:47,052: INFO: common: created directory at: artifacts/data_ingestion]
+[2025-07-12 11:07:47,084: ERROR: common: Error during preprocessing: ['price']]
+[2025-07-12 11:08:40,207: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2025-07-12 11:08:40,211: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-07-12 11:08:40,213: INFO: common: created directory at: artifacts]
+[2025-07-12 11:08:40,215: INFO: common: created directory at: artifacts/data_ingestion]
+[2025-07-12 11:08:46,033: INFO: common: Data preprocessing completed successfully.]
+[2025-07-12 11:08:46,156: INFO: common: created directory at: artifacts/prepare_base_model]
