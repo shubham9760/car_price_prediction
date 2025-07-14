@@ -12,6 +12,8 @@ import base64
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
+import pandas as pd
 
 
 @ensure_annotations
@@ -113,44 +115,14 @@ def load_bin(path: Path) -> Any:
     logger.info(f"binary file loaded from: {path}")
     return data
 
-
 @ensure_annotations
-def preprocess_data(df: pd.DataFrame, target_column: str) -> ConfigBox:
+def preprocess_data(df: pd.DataFrame, target_column: str):
     """
-    Preprocess the data for regression tasks.
-
-    Args:
-        df (pd.DataFrame): Raw input data
-        target_column (str): Name of the target column
-
-    Returns:
-        X_train, X_test, y_train, y_test: Preprocessed train-test split
+    Preprocesses the dataframe: drops NA, splits into X_train, X_test, y_train, y_test
     """
-    try:
-        # Drop rows with missing target
-        df = df.dropna(subset=[target_column])
+    df = df.dropna()
 
-        # Fill missing values for features
-        df.fillna(df.median(numeric_only=True), inplace=True)
+    X = df.drop(columns=[target_column])
+    y = df[target_column]
 
-        # Encode categorical variables
-        df = pd.get_dummies(df, drop_first=True)
-
-        # Split features and target
-        X = df.drop(columns=[target_column])
-        y = df[target_column]
-
-        # Train-test split
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
-        # Feature scaling
-        scaler = StandardScaler()
-        X_train = scaler.fit_transform(X_train)
-        X_test = scaler.transform(X_test)
-
-        logger.info("Data preprocessing completed successfully.")
-        return X_train, X_test, y_train, y_test
-
-    except Exception as e:
-        logger.error(f"Error during preprocessing: {e}")
-        raise e
+    return train_test_split(X, y, test_size=0.2, random_state=42)

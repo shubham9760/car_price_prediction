@@ -127,3 +127,7 @@ Source-Age: 0
 [2025-07-12 11:08:40,215: INFO: common: created directory at: artifacts/data_ingestion]
 [2025-07-12 11:08:46,033: INFO: common: Data preprocessing completed successfully.]
 [2025-07-12 11:08:46,156: INFO: common: created directory at: artifacts/prepare_base_model]
+[2025-07-14 22:46:59,135: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2025-07-14 22:46:59,139: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-07-14 22:46:59,139: INFO: common: created directory at: artifacts]
+[2025-07-14 22:46:59,145: INFO: common: created directory at: artifacts/data_ingestion]
