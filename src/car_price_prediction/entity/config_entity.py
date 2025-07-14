@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from pathlib import Path
+from typing import List
 
 
 @dataclass(frozen=True)
@@ -19,10 +20,11 @@ class PreprocessingConfig:
 
 @dataclass(frozen=True)
 class PrepareBaseModelConfig:
-    root_dir: Path
     base_model_path: Path
     updated_base_model_path: Path
-    params_learning_rate: float
+    feature_columns: List[str]
+    target_column: str
+    test_data_path: Path
 
 
 

@@ -1,9 +1,24 @@
-NORMALIZE: True
-TRAIN_TEST_SPLIT: 0.8
-TEST_SIZE: 0.2
-RANDOM_STATE: 42
-LEARNING_RATE: 0.01
-BATCH_SIZE: 32
-REGULARIZATION:
-  TYPE: L2
-  LAMBDA: 0.001
+model:
+  type: linear_regression
+  feature_columns:
+    - Levy,
+    - Manufacturer,
+    - Model,
+    - Prod. year,
+    - Category,
+    - Leather interior,
+    - Fuel type,
+    - Engine volume,
+    - Mileage,
+    - Cylinders,
+    - Gear box type,
+    - Drive wheels,
+    - Doors,
+    - Wheel,
+    - Color,
+    - Airbags
+  target_column: Price
+
+split:
+  test_size: 0.2
+  random_state: 42
