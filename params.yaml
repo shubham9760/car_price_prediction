@@ -1,21 +1,21 @@
 model:
   type: linear_regression
   feature_columns:
-    - Levy,
-    - Manufacturer,
-    - Model,
-    - Prod. year,
-    - Category,
-    - Leather interior,
-    - Fuel type,
-    - Engine volume,
-    - Mileage,
-    - Cylinders,
-    - Gear box type,
-    - Drive wheels,
-    - Doors,
-    - Wheel,
-    - Color,
+    - Levy
+    - Manufacturer
+    - Model
+    - Prod. year
+    - Category
+    - Leather interior
+    - Fuel type
+    - Engine volume
+    - Mileage
+    - Cylinders
+    - Gear box type
+    - Drive wheels
+    - Doors
+    - Wheel
+    - Color
     - Airbags
   target_column: Price
 
