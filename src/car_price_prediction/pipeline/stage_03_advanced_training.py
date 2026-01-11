@@ -2,6 +2,7 @@ from car_price_prediction.config.configuration import ConfigurationManager
 from car_price_prediction.components.training import Training
 from car_price_prediction.components.model_comparison import ModelFactory, ModelComparison
 from car_price_prediction.components.feature_importance import FeatureAnalysisPipeline
+from car_price_prediction.components.advanced_preprocessing import AdvancedPreprocessor
 from car_price_prediction import logger
 import pandas as pd
 import numpy as np
@@ -52,30 +53,18 @@ class AdvancedModelTrainingPipeline:
         self.best_model_name = None
         self.scaler = None
         self.label_encoders = {}
+        self.preprocessor = AdvancedPreprocessor()
     
     def preprocess_data(self, df: pd.DataFrame):
-        """Preprocess the dataframe"""
-        df = df.copy()
+        """Preprocess the dataframe using advanced preprocessing"""
+        # Use the advanced preprocessor
+        X, y = self.preprocessor.preprocess(df, target_col='Price', fit=True)
         
-        # Replace '-' with NaN
-        df = df.replace('-', pd.NA)
+        # Save preprocessor state for later use
+        self.scaler = self.preprocessor.scaler
+        self.label_encoders = self.preprocessor.label_encoders
         
-        # Handle categorical columns by label encoding
-        for col in df.columns:
-            if df[col].dtype == 'object':
-                df[col] = df[col].fillna('Unknown')
-                le = LabelEncoder()
-                df[col] = le.fit_transform(df[col].astype(str))
-                self.label_encoders[col] = le
-        
-        # Convert to numeric and fill NaN
-        for col in df.columns:
-            df[col] = pd.to_numeric(df[col], errors='coerce')
-        
-        # Fill remaining NaN with median
-        df = df.fillna(df.median())
-        
-        return df
+        return X, y
     
     def train_with_comparison(self, X_train, y_train, X_test, y_test):
         """Train and compare multiple models"""
