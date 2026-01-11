@@ -4,7 +4,6 @@ import yaml
 from car_price_prediction import logger
 import json
 import joblib
-from ensure import ensure_annotations
 from box import ConfigBox
 from pathlib import Path
 from typing import Any
@@ -12,11 +11,9 @@ import base64
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
-from sklearn.model_selection import train_test_split
 import pandas as pd
 
 
-@ensure_annotations
 def read_yaml(path_to_yaml: Path) -> ConfigBox:
     """reads yaml file and returns
 
@@ -42,7 +39,6 @@ def read_yaml(path_to_yaml: Path) -> ConfigBox:
     
 
 
-@ensure_annotations
 def create_directories(path_to_directories: list, verbose=True):
     """create list of directories
 
@@ -56,7 +52,6 @@ def create_directories(path_to_directories: list, verbose=True):
             logger.info(f"created directory at: {path}")
 
 
-@ensure_annotations
 def save_json(path: Path, data: dict):
     """save json data
 
@@ -72,7 +67,6 @@ def save_json(path: Path, data: dict):
 
 
 
-@ensure_annotations
 def load_json(path: Path) -> ConfigBox:
     """load json files data
 
@@ -89,7 +83,6 @@ def load_json(path: Path) -> ConfigBox:
     return ConfigBox(content)
 
 
-@ensure_annotations
 def save_bin(data: Any, path: Path):
     """save binary file
 
@@ -101,7 +94,6 @@ def save_bin(data: Any, path: Path):
     logger.info(f"binary file saved at: {path}")
 
 
-@ensure_annotations
 def load_bin(path: Path) -> Any:
     """load binary data
 
@@ -115,7 +107,19 @@ def load_bin(path: Path) -> Any:
     logger.info(f"binary file loaded from: {path}")
     return data
 
-@ensure_annotations
+def get_size(path: Path) -> str:
+    """get size in KB
+
+    Args:
+        path (Path): path of the file
+
+    Returns:
+        str: size in KB
+    """
+    size_in_kb = round(os.path.getsize(path) / 1024)
+    return f"~ {size_in_kb} KB"
+
+
 def preprocess_data(df: pd.DataFrame, target_column: str):
     """
     Preprocesses the dataframe: drops NA, splits into X_train, X_test, y_train, y_test

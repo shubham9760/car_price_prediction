@@ -1,3 +1,11 @@
+EPOCHS: 25
+BATCH_SIZE: 16
+AUGMENTATION: false
+IMAGE_SIZE: [224, 224]
+LEARNING_RATE: 0.001
+RANDOM_STATE: 42
+TEST_SIZE: 0.2
+
 model:
   type: linear_regression
   feature_columns:

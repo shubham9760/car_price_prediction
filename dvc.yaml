@@ -1,0 +1,47 @@
+stages:
+  data_ingestion:
+    cmd: python src/car_price_prediction/pipeline/stage_01_data_ingestion.py
+    deps:
+      - src/car_price_prediction/pipeline/stage_01_data_ingestion.py
+      - src/car_price_prediction/components/data_ingestion.py
+      - config/config.yaml
+    outs:
+      - artifacts/data_ingestion/car_price_prediction.csv
+
+  prepare_base_model:
+    cmd: python src/car_price_prediction/pipeline/stage_02_prepare_base_model.py
+    deps:
+      - src/car_price_prediction/pipeline/stage_02_prepare_base_model.py
+      - src/car_price_prediction/components/prepare_base_model.py
+      - artifacts/data_ingestion/car_price_prediction.csv
+      - config/config.yaml
+      - params.yaml
+    outs:
+      - artifacts/prepare_base_model/base_model.pkl
+      - artifacts/prepare_base_model/base_model_updated.pkl
+
+  training:
+    cmd: python src/car_price_prediction/pipeline/stage_03_training.py
+    deps:
+      - src/car_price_prediction/pipeline/stage_03_training.py
+      - src/car_price_prediction/components/training.py
+      - artifacts/data_ingestion/car_price_prediction.csv
+      - artifacts/prepare_base_model/base_model_updated.pkl
+      - config/config.yaml
+      - params.yaml
+    outs:
+      - artifacts/training/model.pkl
+      - artifacts/training/scaler.pkl
+
+  evaluation:
+    cmd: python src/car_price_prediction/pipeline/stage_04_evaluation.py
+    deps:
+      - src/car_price_prediction/pipeline/stage_04_evaluation.py
+      - src/car_price_prediction/components/evaluation.py
+      - artifacts/data_ingestion/car_price_prediction.csv
+      - artifacts/training/model.pkl
+      - config/config.yaml
+      - params.yaml
+    metrics:
+      - scores.json:
+          cache: false

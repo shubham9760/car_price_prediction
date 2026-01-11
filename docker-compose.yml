@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  # Flask API Service
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: car-price-prediction-api
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=production
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./artifacts:/app/artifacts
+      - ./logs:/app/logs
+    networks:
+      - car-price-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/info/status"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
+  
+  # MLflow Tracking Server (optional - for model versioning)
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v2.7.0
+    container_name: mlflow-server
+    ports:
+      - "5001:5000"
+    environment:
+      - MLFLOW_BACKEND_STORE_URI=sqlite:////mlflow/mlflow.db
+      - MLFLOW_DEFAULT_ARTIFACT_ROOT=/mlflow/artifacts
+    volumes:
+      - mlflow-data:/mlflow
+    networks:
+      - car-price-network
+    restart: unless-stopped
+    command: mlflow server --host 0.0.0.0 --port 5000
+
+networks:
+  car-price-network:
+    driver: bridge
+
+volumes:
+  mlflow-data:
+    driver: local

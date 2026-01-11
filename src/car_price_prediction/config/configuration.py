@@ -53,14 +53,16 @@ class ConfigurationManager:
     
     def get_prepare_base_model_config(self) -> PrepareBaseModelConfig:
         config = self.config.prepare_base_model
+        params = self.params
         
         create_directories([config.root_dir])
 
         prepare_base_model_config = PrepareBaseModelConfig(
-            root_dir=Path(config.root_dir),
             base_model_path=Path(config.base_model_path),
             updated_base_model_path=Path(config.updated_base_model_path),
-            params_learning_rate=self.params.LEARNING_RATE,
+            feature_columns=params.model.feature_columns,
+            target_column=params.model.target_column,
+            test_data_path=Path(config.test_data_path)
         )
 
         return prepare_base_model_config
@@ -112,8 +114,8 @@ class ConfigurationManager:
 
     def get_validation_config(self) -> EvaluationConfig:
         eval_config = EvaluationConfig(
-            path_of_model=Path("artifacts/training/model.h5"),
-            training_data=Path("artifacts/data_ingestion/Chicken-fecal-images"),
+            path_of_model=Path("artifacts/training/model.pkl"),
+            training_data=Path("artifacts/data_ingestion"),
             all_params=self.params,
             params_image_size=self.params.IMAGE_SIZE,
             params_batch_size=self.params.BATCH_SIZE

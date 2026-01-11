@@ -1,19 +1,37 @@
-pandas
-tensorflow
-pandas 
-dvc
-notebook
-numpy
-matplotlib
-seaborn
-python-box
-pyYAML
-tqdm
-ensure
-joblib
-types-PyYAML
-scipy
-Flask
-Flask-Cors
-scikit-learn
--e .
+# Core Data Processing & ML Libraries
+pandas==2.1.4
+numpy==1.26.3
+scipy==1.12.0
+scikit-learn==1.3.2
+
+# Deep Learning (TensorFlow 2.16+ supports Python 3.12)
+tensorflow==2.16.2
+
+# Advanced ML Models
+xgboost==2.0.3
+
+# Model Management & Tracking
+mlflow==2.9.1
+joblib==1.3.2
+
+# Web Framework & APIs
+Flask==3.0.0
+Flask-Cors==4.0.0
+Flask-RESTX==0.5.1
+
+# Data Validation & Configuration
+pydantic==2.5.0
+python-box==7.1.1
+PyYAML==6.0.1
+types-PyYAML==6.0.12.12
+
+# Development & Experimentation
+notebook==7.0.6
+jupyter==1.0.0
+ipython==8.18.1
+
+# Data Version Control
+dvc==3.27.0
+
+# Utilities
+tqdm==4.66.1
