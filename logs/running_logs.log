@@ -940,3 +940,517 @@ x==========x]
 [2026-01-11 19:03:10,882: INFO: common: yaml file: config/config.yaml loaded successfully]
 [2026-01-11 19:03:10,885: INFO: common: yaml file: params.yaml loaded successfully]
 [2026-01-11 19:03:10,885: INFO: common: created directory at: artifacts]
+[2026-01-11 19:04:13,198: WARNING: model_tracking: Could not initialize MLflow: API request to http://localhost:5001/api/2.0/mlflow/experiments/get-by-name failed with exception HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /api/2.0/mlflow/experiments/get-by-name?experiment_name=car_price_prediction (Caused by NewConnectionError("HTTPConnection(host='localhost', port=5001): Failed to establish a new connection: [Errno 111] Connection refused")) - tracking disabled]
+[2026-01-11 19:04:13,199: INFO: common: created directory at: artifacts/training]
+[2026-01-11 19:04:13,199: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-01-11 19:04:13,199: INFO: stage_03_advanced_training: Loading training data]
+[2026-01-11 19:04:13,234: INFO: stage_03_advanced_training: Preprocessing data]
+[2026-01-11 19:04:13,322: INFO: stage_03_advanced_training: Splitting data into train/test sets]
+[2026-01-11 19:04:13,325: INFO: stage_03_advanced_training: Applying feature scaling]
+[2026-01-11 19:04:13,330: INFO: stage_03_advanced_training: Comparing different models]
+[2026-01-11 19:04:13,330: INFO: stage_03_advanced_training: Starting model comparison]
+[2026-01-11 19:04:13,331: INFO: model_comparison: Initialized 4 models: ['linear_regression', 'random_forest', 'xgboost', 'gradient_boosting']]
+[2026-01-11 19:04:13,331: INFO: model_comparison: Evaluating linear_regression...]
+[2026-01-11 19:04:14,794: INFO: model_comparison: linear_regression: CV R² = -0.2312 ± 0.1544, Test R² = -0.1516, RMSE = 18942.70]
+[2026-01-11 19:04:14,798: INFO: model_comparison: Evaluating random_forest...]
+[2026-01-11 19:04:23,534: INFO: model_comparison: random_forest: CV R² = -15.5880 ± 12.0660, Test R² = -38.3133, RMSE = 110679.20]
+[2026-01-11 19:04:23,534: INFO: model_comparison: Evaluating xgboost...]
+[2026-01-11 19:04:24,127: INFO: model_comparison: xgboost: CV R² = -8.3458 ± 12.0360, Test R² = -735.8846, RMSE = 479177.14]
+[2026-01-11 19:04:24,127: INFO: model_comparison: Evaluating gradient_boosting...]
+[2026-01-11 19:04:31,260: INFO: model_comparison: gradient_boosting: CV R² = -11.5678 ± 23.4762, Test R² = -575.3811, RMSE = 423790.51]
+[2026-01-11 19:04:31,261: INFO: model_comparison: Comparison results saved to artifacts/model_comparison/model_comparison.json]
+[2026-01-11 19:04:31,261: INFO: model_comparison: Best model: linear_regression]
+[2026-01-11 19:04:31,261: INFO: stage_03_advanced_training: Best model selected: linear_regression]
+[2026-01-11 19:04:31,261: INFO: model_comparison: Initialized 4 models: ['linear_regression', 'random_forest', 'xgboost', 'gradient_boosting']]
+[2026-01-11 19:04:31,261: INFO: model_comparison: Training linear_regression...]
+[2026-01-11 19:04:31,265: INFO: model_comparison: linear_regression trained successfully]
+[2026-01-11 19:04:31,265: INFO: stage_03_advanced_training: Analyzing feature importance]
+[2026-01-11 19:04:31,265: INFO: stage_03_advanced_training: Analyzing feature importance]
+[2026-01-11 19:04:31,265: INFO: feature_importance: Using linear model coefficients]
+[2026-01-11 19:04:31,267: INFO: feature_importance: Linear coefficients calculated successfully]
+[2026-01-11 19:04:31,267: INFO: feature_importance: Calculating permutation importance]
+[2026-01-11 19:04:31,396: INFO: feature_importance: Permutation importance calculated successfully]
+[2026-01-11 19:04:31,397: INFO: feature_importance: Feature importance saved to artifacts/feature_importance/feature_importance.csv]
+[2026-01-11 19:04:31,398: INFO: feature_importance: Feature importance saved to artifacts/feature_importance/feature_importance.json]
+[2026-01-11 19:04:31,831: INFO: feature_importance: Feature importance plot saved to artifacts/feature_importance/feature_importance_plot.png]
+[2026-01-11 19:04:31,831: INFO: feature_importance: Feature analysis completed successfully]
+[2026-01-11 19:04:31,834: INFO: stage_03_advanced_training: Versioning model]
+[2026-01-11 19:04:31,834: INFO: model_tracking: Model version 1 created]
+[2026-01-11 19:04:31,835: INFO: stage_03_advanced_training: Saving artifacts]
+[2026-01-11 19:04:31,835: INFO: stage_03_advanced_training: Model saved to artifacts/training/model.pkl/model.pkl]
+[2026-01-11 19:04:31,836: INFO: stage_03_advanced_training: Scaler saved to artifacts/training/model.pkl/scaler.pkl]
+[2026-01-11 19:04:31,840: INFO: stage_03_advanced_training: Label encoders saved to artifacts/training/model.pkl/label_encoders.pkl]
+[2026-01-11 19:04:31,840: INFO: stage_03_advanced_training: ==================================================]
+[2026-01-11 19:04:31,840: INFO: stage_03_advanced_training: TRAINING COMPLETED SUCCESSFULLY]
+[2026-01-11 19:04:31,840: INFO: stage_03_advanced_training: ==================================================]
+[2026-01-11 19:04:31,840: INFO: stage_03_advanced_training: Best Model: linear_regression]
+[2026-01-11 19:04:31,840: INFO: stage_03_advanced_training: R² Score: -0.1516]
+[2026-01-11 19:04:31,841: INFO: stage_03_advanced_training: RMSE: $18942.70]
+[2026-01-11 19:04:31,841: INFO: stage_03_advanced_training: MAE: $13334.47]
+[2026-01-11 19:04:31,841: ERROR: stage_03_advanced_training: Error in advanced training pipeline: 'NoneType' object is not subscriptable]
+Traceback (most recent call last):
+  File "/workspaces/car_price_prediction/src/car_price_prediction/pipeline/stage_03_advanced_training.py", line 247, in main
+    logger.info(f"Model Version: {version_info['version']}")
+                                  ~~~~~~~~~~~~^^^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+[2026-01-11 19:04:31,841: ERROR: main: 'NoneType' object is not subscriptable]
+Traceback (most recent call last):
+  File "/workspaces/car_price_prediction/main.py", line 64, in <module>
+    model_trainer.main()
+  File "/workspaces/car_price_prediction/src/car_price_prediction/pipeline/stage_03_advanced_training.py", line 259, in main
+    raise e
+  File "/workspaces/car_price_prediction/src/car_price_prediction/pipeline/stage_03_advanced_training.py", line 247, in main
+    logger.info(f"Model Version: {version_info['version']}")
+                                  ~~~~~~~~~~~~^^^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+[2026-01-11 19:04:50,407: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2026-01-11 19:04:50,410: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-01-11 19:04:50,413: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-11 19:04:50,413: INFO: common: created directory at: artifacts]
+[2026-01-11 19:04:50,413: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-01-11 19:04:50,785: INFO: data_ingestion: artifacts/data_ingestion/data.zip downloaded with the following info: 
+Connection: close
+Content-Length: 439363
+Cache-Control: max-age=300
+Content-Security-Policy: default-src 'none'; style-src 'unsafe-inline'; sandbox
+Content-Type: application/zip
+ETag: "f02129725677995f2b90e6feee5c59cb0cc92525384c3ad1f4f2bc5010823136"
+Strict-Transport-Security: max-age=31536000
+X-Content-Type-Options: nosniff
+X-Frame-Options: deny
+X-XSS-Protection: 1; mode=block
+X-GitHub-Request-Id: B34E:10F3E3:62169C:BC2C1C:6963F3EC
+Accept-Ranges: bytes
+Date: Sun, 11 Jan 2026 19:04:50 GMT
+Via: 1.1 varnish
+X-Served-By: cache-sin-wsss1830074-SIN
+X-Cache: HIT
+X-Cache-Hits: 0
+X-Timer: S1768158291.612154,VS0,VE1
+Vary: Authorization,Accept-Encoding
+Access-Control-Allow-Origin: *
+Cross-Origin-Resource-Policy: cross-origin
+X-Fastly-Request-ID: 897b2e2db31641f04a9c95ce6371a57fbcfce84e
+Expires: Sun, 11 Jan 2026 19:09:50 GMT
+Source-Age: 100
+
+]
+[2026-01-11 19:04:50,795: INFO: data_ingestion: Extracted zip file to artifacts/data_ingestion]
+[2026-01-11 19:04:50,795: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-01-11 19:04:50,795: INFO: main: *******************]
+[2026-01-11 19:04:50,795: INFO: main: >>>>>> stage Prepare base model started <<<<<<]
+[2026-01-11 19:04:50,797: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-01-11 19:04:50,799: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-11 19:04:50,799: INFO: common: created directory at: artifacts]
+[2026-01-11 19:04:50,799: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-01-11 19:04:50,799: INFO: stage_02_prepare_base_model: Creating base model]
+[2026-01-11 19:04:50,800: INFO: prepare_base_model: ✅ Base model saved at: artifacts/prepare_base_model/base_model.pkl]
+[2026-01-11 19:04:50,800: INFO: stage_02_prepare_base_model: Updating base model with training data]
+[2026-01-11 19:04:50,932: INFO: prepare_base_model: ✅ Trained model saved at: artifacts/prepare_base_model/base_model_updated.pkl]
+[2026-01-11 19:04:50,933: INFO: main: >>>>>> stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-01-11 19:04:50,933: INFO: main: *******************]
+[2026-01-11 19:04:50,933: INFO: main: >>>>>> stage Training started <<<<<<]
+[2026-01-11 19:04:50,933: INFO: main: Using ADVANCED training pipeline with model comparison and MLflow tracking]
+[2026-01-11 19:04:50,936: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-01-11 19:04:50,938: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-11 19:04:50,939: INFO: common: created directory at: artifacts]
+[2026-01-11 19:05:53,071: WARNING: model_tracking: Could not initialize MLflow: API request to http://localhost:5001/api/2.0/mlflow/experiments/get-by-name failed with exception HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /api/2.0/mlflow/experiments/get-by-name?experiment_name=car_price_prediction (Caused by NewConnectionError("HTTPConnection(host='localhost', port=5001): Failed to establish a new connection: [Errno 111] Connection refused")) - tracking disabled]
+[2026-01-11 19:05:53,071: INFO: common: created directory at: artifacts/training]
+[2026-01-11 19:05:53,071: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-01-11 19:05:53,071: INFO: stage_03_advanced_training: Loading training data]
+[2026-01-11 19:05:53,107: INFO: stage_03_advanced_training: Preprocessing data]
+[2026-01-11 19:05:53,195: INFO: stage_03_advanced_training: Splitting data into train/test sets]
+[2026-01-11 19:05:53,199: INFO: stage_03_advanced_training: Applying feature scaling]
+[2026-01-11 19:05:53,205: INFO: stage_03_advanced_training: Comparing different models]
+[2026-01-11 19:05:53,205: INFO: stage_03_advanced_training: Starting model comparison]
+[2026-01-11 19:05:53,205: INFO: model_comparison: Initialized 4 models: ['linear_regression', 'random_forest', 'xgboost', 'gradient_boosting']]
+[2026-01-11 19:05:53,205: INFO: model_comparison: Evaluating linear_regression...]
+[2026-01-11 19:05:54,834: INFO: model_comparison: linear_regression: CV R² = -0.2312 ± 0.1544, Test R² = -0.1516, RMSE = 18942.70]
+[2026-01-11 19:05:54,838: INFO: model_comparison: Evaluating random_forest...]
+[2026-01-11 19:06:03,382: INFO: model_comparison: random_forest: CV R² = -15.5880 ± 12.0660, Test R² = -38.3133, RMSE = 110679.20]
+[2026-01-11 19:06:03,383: INFO: model_comparison: Evaluating xgboost...]
+[2026-01-11 19:06:03,992: INFO: model_comparison: xgboost: CV R² = -8.3458 ± 12.0360, Test R² = -735.8846, RMSE = 479177.14]
+[2026-01-11 19:06:03,993: INFO: model_comparison: Evaluating gradient_boosting...]
+[2026-01-11 19:06:11,272: INFO: model_comparison: gradient_boosting: CV R² = -11.5678 ± 23.4762, Test R² = -575.3811, RMSE = 423790.51]
+[2026-01-11 19:06:11,273: INFO: model_comparison: Comparison results saved to artifacts/model_comparison/model_comparison.json]
+[2026-01-11 19:06:11,273: INFO: model_comparison: Best model: linear_regression]
+[2026-01-11 19:06:11,274: INFO: stage_03_advanced_training: Best model selected: linear_regression]
+[2026-01-11 19:06:11,274: INFO: model_comparison: Initialized 4 models: ['linear_regression', 'random_forest', 'xgboost', 'gradient_boosting']]
+[2026-01-11 19:06:11,274: INFO: model_comparison: Training linear_regression...]
+[2026-01-11 19:06:11,278: INFO: model_comparison: linear_regression trained successfully]
+[2026-01-11 19:06:11,278: INFO: stage_03_advanced_training: Analyzing feature importance]
+[2026-01-11 19:06:11,278: INFO: stage_03_advanced_training: Analyzing feature importance]
+[2026-01-11 19:06:11,279: INFO: feature_importance: Using linear model coefficients]
+[2026-01-11 19:06:11,280: INFO: feature_importance: Linear coefficients calculated successfully]
+[2026-01-11 19:06:11,280: INFO: feature_importance: Calculating permutation importance]
+[2026-01-11 19:06:11,402: INFO: feature_importance: Permutation importance calculated successfully]
+[2026-01-11 19:06:11,404: INFO: feature_importance: Feature importance saved to artifacts/feature_importance/feature_importance.csv]
+[2026-01-11 19:06:11,405: INFO: feature_importance: Feature importance saved to artifacts/feature_importance/feature_importance.json]
+[2026-01-11 19:06:11,799: INFO: feature_importance: Feature importance plot saved to artifacts/feature_importance/feature_importance_plot.png]
+[2026-01-11 19:06:11,799: INFO: feature_importance: Feature analysis completed successfully]
+[2026-01-11 19:06:11,802: INFO: stage_03_advanced_training: Versioning model]
+[2026-01-11 19:06:11,802: INFO: model_tracking: Model version 1 created]
+[2026-01-11 19:06:11,802: INFO: stage_03_advanced_training: Saving artifacts]
+[2026-01-11 19:06:11,803: INFO: stage_03_advanced_training: Model saved to artifacts/training/model.pkl/model.pkl]
+[2026-01-11 19:06:11,804: INFO: stage_03_advanced_training: Scaler saved to artifacts/training/model.pkl/scaler.pkl]
+[2026-01-11 19:06:11,808: INFO: stage_03_advanced_training: Label encoders saved to artifacts/training/model.pkl/label_encoders.pkl]
+[2026-01-11 19:06:11,808: INFO: stage_03_advanced_training: ==================================================]
+[2026-01-11 19:06:11,808: INFO: stage_03_advanced_training: TRAINING COMPLETED SUCCESSFULLY]
+[2026-01-11 19:06:11,808: INFO: stage_03_advanced_training: ==================================================]
+[2026-01-11 19:06:11,808: INFO: stage_03_advanced_training: Best Model: linear_regression]
+[2026-01-11 19:06:11,808: INFO: stage_03_advanced_training: R² Score: -0.1516]
+[2026-01-11 19:06:11,808: INFO: stage_03_advanced_training: RMSE: $18942.70]
+[2026-01-11 19:06:11,809: INFO: stage_03_advanced_training: MAE: $13334.47]
+[2026-01-11 19:06:11,809: INFO: stage_03_advanced_training: ==================================================]
+[2026-01-11 19:06:11,809: INFO: main: >>>>>> stage Training completed <<<<<<
+
+x==========x]
+[2026-01-11 19:06:11,809: INFO: main: *******************]
+[2026-01-11 19:06:11,809: INFO: main: >>>>>> stage Evaluation stage started <<<<<<]
+[2026-01-11 19:06:11,812: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-01-11 19:06:11,815: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-11 19:06:11,815: INFO: common: created directory at: artifacts]
+[2026-01-11 19:06:11,815: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-01-11 19:06:11,815: INFO: stage_04_evaluation: Loading data for evaluation]
+[2026-01-11 19:06:11,870: INFO: stage_04_evaluation: Preprocessing data for evaluation]
+[2026-01-11 19:06:11,994: INFO: stage_04_evaluation: Loading model for evaluation]
+[2026-01-11 19:06:11,994: ERROR: main: [Errno 21] Is a directory: 'artifacts/training/model.pkl']
+Traceback (most recent call last):
+  File "/workspaces/car_price_prediction/main.py", line 80, in <module>
+    model_evalution.main()
+  File "/workspaces/car_price_prediction/src/car_price_prediction/pipeline/stage_04_evaluation.py", line 62, in main
+    evaluation.load_model()
+  File "/workspaces/car_price_prediction/src/car_price_prediction/components/evaluation.py", line 19, in load_model
+    self.model = joblib.load(self.config.path_of_model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/joblib/numpy_pickle.py", line 650, in load
+    with open(filename, 'rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+IsADirectoryError: [Errno 21] Is a directory: 'artifacts/training/model.pkl'
+[2026-01-11 19:06:35,634: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2026-01-11 19:06:35,637: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-01-11 19:06:35,638: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-11 19:06:35,639: INFO: common: created directory at: artifacts]
+[2026-01-11 19:06:35,639: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-01-11 19:06:36,292: INFO: data_ingestion: artifacts/data_ingestion/data.zip downloaded with the following info: 
+Connection: close
+Content-Length: 439363
+Cache-Control: max-age=300
+Content-Security-Policy: default-src 'none'; style-src 'unsafe-inline'; sandbox
+Content-Type: application/zip
+ETag: "f02129725677995f2b90e6feee5c59cb0cc92525384c3ad1f4f2bc5010823136"
+Strict-Transport-Security: max-age=31536000
+X-Content-Type-Options: nosniff
+X-Frame-Options: deny
+X-XSS-Protection: 1; mode=block
+X-GitHub-Request-Id: B34E:10F3E3:62169C:BC2C1C:6963F3EC
+Accept-Ranges: bytes
+Date: Sun, 11 Jan 2026 19:06:36 GMT
+Via: 1.1 varnish
+X-Served-By: cache-sin-wsss1830066-SIN
+X-Cache: HIT
+X-Cache-Hits: 0
+X-Timer: S1768158396.127682,VS0,VE1
+Vary: Authorization,Accept-Encoding
+Access-Control-Allow-Origin: *
+Cross-Origin-Resource-Policy: cross-origin
+X-Fastly-Request-ID: aee4dc61c77fe494995eca3dd7a0db6f757a6a2e
+Expires: Sun, 11 Jan 2026 19:11:36 GMT
+Source-Age: 206
+
+]
+[2026-01-11 19:06:36,302: INFO: data_ingestion: Extracted zip file to artifacts/data_ingestion]
+[2026-01-11 19:06:36,302: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-01-11 19:06:36,302: INFO: main: *******************]
+[2026-01-11 19:06:36,302: INFO: main: >>>>>> stage Prepare base model started <<<<<<]
+[2026-01-11 19:06:36,304: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-01-11 19:06:36,306: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-11 19:06:36,306: INFO: common: created directory at: artifacts]
+[2026-01-11 19:06:36,307: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-01-11 19:06:36,307: INFO: stage_02_prepare_base_model: Creating base model]
+[2026-01-11 19:06:36,307: INFO: prepare_base_model: ✅ Base model saved at: artifacts/prepare_base_model/base_model.pkl]
+[2026-01-11 19:06:36,307: INFO: stage_02_prepare_base_model: Updating base model with training data]
+[2026-01-11 19:06:36,445: INFO: prepare_base_model: ✅ Trained model saved at: artifacts/prepare_base_model/base_model_updated.pkl]
+[2026-01-11 19:06:36,447: INFO: main: >>>>>> stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-01-11 19:06:36,447: INFO: main: *******************]
+[2026-01-11 19:06:36,447: INFO: main: >>>>>> stage Training started <<<<<<]
+[2026-01-11 19:06:36,447: INFO: main: Using ADVANCED training pipeline with model comparison and MLflow tracking]
+[2026-01-11 19:06:36,449: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-01-11 19:06:36,452: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-11 19:06:36,452: INFO: common: created directory at: artifacts]
+[2026-01-11 19:07:39,290: WARNING: model_tracking: Could not initialize MLflow: API request to http://localhost:5001/api/2.0/mlflow/experiments/get-by-name failed with exception HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /api/2.0/mlflow/experiments/get-by-name?experiment_name=car_price_prediction (Caused by NewConnectionError("HTTPConnection(host='localhost', port=5001): Failed to establish a new connection: [Errno 111] Connection refused")) - tracking disabled]
+[2026-01-11 19:07:39,291: INFO: common: created directory at: artifacts/training]
+[2026-01-11 19:07:39,291: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-01-11 19:07:39,291: INFO: stage_03_advanced_training: Loading training data]
+[2026-01-11 19:07:39,326: INFO: stage_03_advanced_training: Preprocessing data]
+[2026-01-11 19:07:39,414: INFO: stage_03_advanced_training: Splitting data into train/test sets]
+[2026-01-11 19:07:39,419: INFO: stage_03_advanced_training: Applying feature scaling]
+[2026-01-11 19:07:39,425: INFO: stage_03_advanced_training: Comparing different models]
+[2026-01-11 19:07:39,425: INFO: stage_03_advanced_training: Starting model comparison]
+[2026-01-11 19:07:39,425: INFO: model_comparison: Initialized 4 models: ['linear_regression', 'random_forest', 'xgboost', 'gradient_boosting']]
+[2026-01-11 19:07:39,425: INFO: model_comparison: Evaluating linear_regression...]
+[2026-01-11 19:07:41,012: INFO: model_comparison: linear_regression: CV R² = -0.2312 ± 0.1544, Test R² = -0.1516, RMSE = 18942.70]
+[2026-01-11 19:07:41,018: INFO: model_comparison: Evaluating random_forest...]
+[2026-01-11 19:07:49,678: INFO: model_comparison: random_forest: CV R² = -15.5880 ± 12.0660, Test R² = -38.3133, RMSE = 110679.20]
+[2026-01-11 19:07:49,678: INFO: model_comparison: Evaluating xgboost...]
+[2026-01-11 19:07:50,269: INFO: model_comparison: xgboost: CV R² = -8.3458 ± 12.0360, Test R² = -735.8846, RMSE = 479177.14]
+[2026-01-11 19:07:50,269: INFO: model_comparison: Evaluating gradient_boosting...]
+[2026-01-11 19:07:57,368: INFO: model_comparison: gradient_boosting: CV R² = -11.5678 ± 23.4762, Test R² = -575.3811, RMSE = 423790.51]
+[2026-01-11 19:07:57,368: INFO: model_comparison: Comparison results saved to artifacts/model_comparison/model_comparison.json]
+[2026-01-11 19:07:57,368: INFO: model_comparison: Best model: linear_regression]
+[2026-01-11 19:07:57,369: INFO: stage_03_advanced_training: Best model selected: linear_regression]
+[2026-01-11 19:07:57,369: INFO: model_comparison: Initialized 4 models: ['linear_regression', 'random_forest', 'xgboost', 'gradient_boosting']]
+[2026-01-11 19:07:57,369: INFO: model_comparison: Training linear_regression...]
+[2026-01-11 19:07:57,373: INFO: model_comparison: linear_regression trained successfully]
+[2026-01-11 19:07:57,373: INFO: stage_03_advanced_training: Analyzing feature importance]
+[2026-01-11 19:07:57,373: INFO: stage_03_advanced_training: Analyzing feature importance]
+[2026-01-11 19:07:57,373: INFO: feature_importance: Using linear model coefficients]
+[2026-01-11 19:07:57,375: INFO: feature_importance: Linear coefficients calculated successfully]
+[2026-01-11 19:07:57,375: INFO: feature_importance: Calculating permutation importance]
+[2026-01-11 19:07:57,495: INFO: feature_importance: Permutation importance calculated successfully]
+[2026-01-11 19:07:57,496: INFO: feature_importance: Feature importance saved to artifacts/feature_importance/feature_importance.csv]
+[2026-01-11 19:07:57,497: INFO: feature_importance: Feature importance saved to artifacts/feature_importance/feature_importance.json]
+[2026-01-11 19:07:57,920: INFO: feature_importance: Feature importance plot saved to artifacts/feature_importance/feature_importance_plot.png]
+[2026-01-11 19:07:57,920: INFO: feature_importance: Feature analysis completed successfully]
+[2026-01-11 19:07:57,923: INFO: stage_03_advanced_training: Versioning model]
+[2026-01-11 19:07:57,923: INFO: model_tracking: Model version 1 created]
+[2026-01-11 19:07:57,923: INFO: stage_03_advanced_training: Saving artifacts]
+[2026-01-11 19:07:57,924: INFO: stage_03_advanced_training: Model saved to artifacts/training/model.pkl]
+[2026-01-11 19:07:57,925: INFO: stage_03_advanced_training: Scaler saved to artifacts/training/scaler.pkl]
+[2026-01-11 19:07:57,929: INFO: stage_03_advanced_training: Label encoders saved to artifacts/training/label_encoders.pkl]
+[2026-01-11 19:07:57,929: INFO: stage_03_advanced_training: ==================================================]
+[2026-01-11 19:07:57,929: INFO: stage_03_advanced_training: TRAINING COMPLETED SUCCESSFULLY]
+[2026-01-11 19:07:57,929: INFO: stage_03_advanced_training: ==================================================]
+[2026-01-11 19:07:57,929: INFO: stage_03_advanced_training: Best Model: linear_regression]
+[2026-01-11 19:07:57,929: INFO: stage_03_advanced_training: R² Score: -0.1516]
+[2026-01-11 19:07:57,929: INFO: stage_03_advanced_training: RMSE: $18942.70]
+[2026-01-11 19:07:57,929: INFO: stage_03_advanced_training: MAE: $13334.47]
+[2026-01-11 19:07:57,930: INFO: stage_03_advanced_training: ==================================================]
+[2026-01-11 19:07:57,930: INFO: main: >>>>>> stage Training completed <<<<<<
+
+x==========x]
+[2026-01-11 19:07:57,930: INFO: main: *******************]
+[2026-01-11 19:07:57,930: INFO: main: >>>>>> stage Evaluation stage started <<<<<<]
+[2026-01-11 19:07:57,933: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-01-11 19:07:57,936: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-11 19:07:57,936: INFO: common: created directory at: artifacts]
+[2026-01-11 19:07:57,936: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-01-11 19:07:57,936: INFO: stage_04_evaluation: Loading data for evaluation]
+[2026-01-11 19:07:57,988: INFO: stage_04_evaluation: Preprocessing data for evaluation]
+[2026-01-11 19:07:58,103: INFO: stage_04_evaluation: Loading model for evaluation]
+[2026-01-11 19:07:58,104: INFO: evaluation: Model loaded from artifacts/training/model.pkl]
+[2026-01-11 19:07:58,105: INFO: evaluation: Scaler loaded from artifacts/training/scaler.pkl]
+[2026-01-11 19:07:58,105: INFO: stage_04_evaluation: Evaluating model]
+[2026-01-11 19:07:58,106: INFO: evaluation: Starting model evaluation]
+[2026-01-11 19:07:58,109: INFO: evaluation: Evaluation metrics: {'MSE': 358825882.9412798, 'RMSE': 18942.699990795394, 'MAE': 13334.470623266645, 'R2': -0.15157182727188712}]
+[2026-01-11 19:07:58,109: INFO: common: json file saved at: scores.json]
+[2026-01-11 19:07:58,109: INFO: stage_04_evaluation: Evaluation completed. Scores: {'MSE': 358825882.9412798, 'RMSE': 18942.699990795394, 'MAE': 13334.470623266645, 'R2': -0.15157182727188712}]
+[2026-01-11 19:07:58,109: INFO: main: >>>>>> stage Evaluation stage completed <<<<<<
+
+x==========x]
+[2026-01-11 19:08:35,667: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2026-01-11 19:08:35,669: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-01-11 19:08:35,671: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-11 19:08:35,671: INFO: common: created directory at: artifacts]
+[2026-01-11 19:08:35,671: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-01-11 19:08:35,671: INFO: data_ingestion: File already exists with size: ~ 429 KB]
+[2026-01-11 19:08:35,681: INFO: data_ingestion: Extracted zip file to artifacts/data_ingestion]
+[2026-01-11 19:08:35,681: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-01-11 19:08:35,681: INFO: main: *******************]
+[2026-01-11 19:08:35,682: INFO: main: >>>>>> stage Prepare base model started <<<<<<]
+[2026-01-11 19:08:35,683: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-01-11 19:08:35,685: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-11 19:08:35,685: INFO: common: created directory at: artifacts]
+[2026-01-11 19:08:35,685: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-01-11 19:08:35,685: INFO: stage_02_prepare_base_model: Creating base model]
+[2026-01-11 19:08:35,686: INFO: prepare_base_model: ✅ Base model saved at: artifacts/prepare_base_model/base_model.pkl]
+[2026-01-11 19:08:35,686: INFO: stage_02_prepare_base_model: Updating base model with training data]
+[2026-01-11 19:08:35,821: INFO: prepare_base_model: ✅ Trained model saved at: artifacts/prepare_base_model/base_model_updated.pkl]
+[2026-01-11 19:08:35,822: INFO: main: >>>>>> stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-01-11 19:08:35,822: INFO: main: *******************]
+[2026-01-11 19:08:35,822: INFO: main: >>>>>> stage Training started <<<<<<]
+[2026-01-11 19:08:35,822: INFO: main: Using ADVANCED training pipeline with model comparison and MLflow tracking]
+[2026-01-11 19:08:35,824: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-01-11 19:08:35,827: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-11 19:08:35,827: INFO: common: created directory at: artifacts]
+[2026-01-11 19:09:38,505: WARNING: model_tracking: Could not initialize MLflow: API request to http://localhost:5001/api/2.0/mlflow/experiments/get-by-name failed with exception HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /api/2.0/mlflow/experiments/get-by-name?experiment_name=car_price_prediction (Caused by NewConnectionError("HTTPConnection(host='localhost', port=5001): Failed to establish a new connection: [Errno 111] Connection refused")) - tracking disabled]
+[2026-01-11 19:09:38,506: INFO: common: created directory at: artifacts/training]
+[2026-01-11 19:09:38,506: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-01-11 19:09:38,506: INFO: stage_03_advanced_training: Loading training data]
+[2026-01-11 19:09:38,542: INFO: stage_03_advanced_training: Preprocessing data]
+[2026-01-11 19:09:38,628: INFO: stage_03_advanced_training: Splitting data into train/test sets]
+[2026-01-11 19:09:38,631: INFO: stage_03_advanced_training: Applying feature scaling]
+[2026-01-11 19:09:38,638: INFO: stage_03_advanced_training: Comparing different models]
+[2026-01-11 19:09:38,639: INFO: stage_03_advanced_training: Starting model comparison]
+[2026-01-11 19:09:38,639: INFO: model_comparison: Initialized 4 models: ['linear_regression', 'random_forest', 'xgboost', 'gradient_boosting']]
+[2026-01-11 19:09:38,639: INFO: model_comparison: Evaluating linear_regression...]
+[2026-01-11 19:09:40,190: INFO: model_comparison: linear_regression: CV R² = -0.2312 ± 0.1544, Test R² = -0.1516, RMSE = 18942.70]
+[2026-01-11 19:09:40,196: INFO: model_comparison: Evaluating random_forest...]
+[2026-01-11 19:09:48,791: INFO: model_comparison: random_forest: CV R² = -15.5880 ± 12.0660, Test R² = -38.3133, RMSE = 110679.20]
+[2026-01-11 19:09:48,791: INFO: model_comparison: Evaluating xgboost...]
+[2026-01-11 19:09:49,404: INFO: model_comparison: xgboost: CV R² = -8.3458 ± 12.0360, Test R² = -735.8846, RMSE = 479177.14]
+[2026-01-11 19:09:49,405: INFO: model_comparison: Evaluating gradient_boosting...]
+[2026-01-11 19:09:56,531: INFO: model_comparison: gradient_boosting: CV R² = -11.5678 ± 23.4762, Test R² = -575.3811, RMSE = 423790.51]
+[2026-01-11 19:09:56,532: INFO: model_comparison: Comparison results saved to artifacts/model_comparison/model_comparison.json]
+[2026-01-11 19:09:56,532: INFO: model_comparison: Best model: linear_regression]
+[2026-01-11 19:09:56,533: INFO: stage_03_advanced_training: Best model selected: linear_regression]
+[2026-01-11 19:09:56,533: INFO: model_comparison: Initialized 4 models: ['linear_regression', 'random_forest', 'xgboost', 'gradient_boosting']]
+[2026-01-11 19:09:56,533: INFO: model_comparison: Training linear_regression...]
+[2026-01-11 19:09:56,537: INFO: model_comparison: linear_regression trained successfully]
+[2026-01-11 19:09:56,537: INFO: stage_03_advanced_training: Analyzing feature importance]
+[2026-01-11 19:09:56,537: INFO: stage_03_advanced_training: Analyzing feature importance]
+[2026-01-11 19:09:56,537: INFO: feature_importance: Using linear model coefficients]
+[2026-01-11 19:09:56,539: INFO: feature_importance: Linear coefficients calculated successfully]
+[2026-01-11 19:09:56,539: INFO: feature_importance: Calculating permutation importance]
+[2026-01-11 19:09:56,665: INFO: feature_importance: Permutation importance calculated successfully]
+[2026-01-11 19:09:56,667: INFO: feature_importance: Feature importance saved to artifacts/feature_importance/feature_importance.csv]
+[2026-01-11 19:09:56,668: INFO: feature_importance: Feature importance saved to artifacts/feature_importance/feature_importance.json]
+[2026-01-11 19:09:57,091: INFO: feature_importance: Feature importance plot saved to artifacts/feature_importance/feature_importance_plot.png]
+[2026-01-11 19:09:57,091: INFO: feature_importance: Feature analysis completed successfully]
+[2026-01-11 19:09:57,094: INFO: stage_03_advanced_training: Versioning model]
+[2026-01-11 19:09:57,094: INFO: model_tracking: Model version 2 created]
+[2026-01-11 19:09:57,094: INFO: stage_03_advanced_training: Saving artifacts]
+[2026-01-11 19:09:57,095: INFO: stage_03_advanced_training: Model saved to artifacts/training/model.pkl]
+[2026-01-11 19:09:57,096: INFO: stage_03_advanced_training: Scaler saved to artifacts/training/scaler.pkl]
+[2026-01-11 19:09:57,100: INFO: stage_03_advanced_training: Label encoders saved to artifacts/training/label_encoders.pkl]
+[2026-01-11 19:09:57,100: INFO: stage_03_advanced_training: ==================================================]
+[2026-01-11 19:09:57,100: INFO: stage_03_advanced_training: TRAINING COMPLETED SUCCESSFULLY]
+[2026-01-11 19:09:57,100: INFO: stage_03_advanced_training: ==================================================]
+[2026-01-11 19:09:57,100: INFO: stage_03_advanced_training: Best Model: linear_regression]
+[2026-01-11 19:09:57,100: INFO: stage_03_advanced_training: R² Score: -0.1516]
+[2026-01-11 19:09:57,101: INFO: stage_03_advanced_training: RMSE: $18942.70]
+[2026-01-11 19:09:57,101: INFO: stage_03_advanced_training: MAE: $13334.47]
+[2026-01-11 19:09:57,101: INFO: stage_03_advanced_training: ==================================================]
+[2026-01-11 19:09:57,101: INFO: main: >>>>>> stage Training completed <<<<<<
+
+x==========x]
+[2026-01-11 19:09:57,101: INFO: main: *******************]
+[2026-01-11 19:09:57,101: INFO: main: >>>>>> stage Evaluation stage started <<<<<<]
+[2026-01-11 19:09:57,104: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-01-11 19:09:57,107: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-11 19:09:57,107: INFO: common: created directory at: artifacts]
+[2026-01-11 19:09:57,107: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-01-11 19:09:57,107: INFO: stage_04_evaluation: Loading data for evaluation]
+[2026-01-11 19:09:57,157: INFO: stage_04_evaluation: Preprocessing data for evaluation]
+[2026-01-11 19:09:57,263: INFO: stage_04_evaluation: Loading model for evaluation]
+[2026-01-11 19:09:57,263: INFO: evaluation: Model loaded from artifacts/training/model.pkl]
+[2026-01-11 19:09:57,264: INFO: evaluation: Scaler loaded from artifacts/training/scaler.pkl]
+[2026-01-11 19:09:57,264: INFO: stage_04_evaluation: Evaluating model]
+[2026-01-11 19:09:57,265: INFO: evaluation: Starting model evaluation]
+[2026-01-11 19:09:57,267: INFO: evaluation: Evaluation metrics: {'MSE': 358825882.9412798, 'RMSE': 18942.699990795394, 'MAE': 13334.470623266645, 'R2': -0.15157182727188712}]
+[2026-01-11 19:09:57,268: INFO: common: json file saved at: scores.json]
+[2026-01-11 19:09:57,268: INFO: stage_04_evaluation: Evaluation completed. Scores: {'MSE': 358825882.9412798, 'RMSE': 18942.699990795394, 'MAE': 13334.470623266645, 'R2': -0.15157182727188712}]
+[2026-01-11 19:09:57,268: INFO: main: >>>>>> stage Evaluation stage completed <<<<<<
+
+x==========x]
+[2026-01-11 19:10:20,098: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2026-01-11 19:10:20,100: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-01-11 19:10:20,102: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-11 19:10:20,102: INFO: common: created directory at: artifacts]
+[2026-01-11 19:10:20,102: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-01-11 19:10:20,102: INFO: data_ingestion: File already exists with size: ~ 429 KB]
+[2026-01-11 19:10:20,114: INFO: data_ingestion: Extracted zip file to artifacts/data_ingestion]
+[2026-01-11 19:10:20,114: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2026-01-11 19:10:20,114: INFO: main: *******************]
+[2026-01-11 19:10:20,114: INFO: main: >>>>>> stage Prepare base model started <<<<<<]
+[2026-01-11 19:10:20,116: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-01-11 19:10:20,117: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-11 19:10:20,118: INFO: common: created directory at: artifacts]
+[2026-01-11 19:10:20,118: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-01-11 19:10:20,118: INFO: stage_02_prepare_base_model: Creating base model]
+[2026-01-11 19:10:20,118: INFO: prepare_base_model: ✅ Base model saved at: artifacts/prepare_base_model/base_model.pkl]
+[2026-01-11 19:10:20,119: INFO: stage_02_prepare_base_model: Updating base model with training data]
+[2026-01-11 19:10:20,256: INFO: prepare_base_model: ✅ Trained model saved at: artifacts/prepare_base_model/base_model_updated.pkl]
+[2026-01-11 19:10:20,257: INFO: main: >>>>>> stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-01-11 19:10:20,257: INFO: main: *******************]
+[2026-01-11 19:10:20,258: INFO: main: >>>>>> stage Training started <<<<<<]
+[2026-01-11 19:10:20,258: INFO: main: Using ADVANCED training pipeline with model comparison and MLflow tracking]
+[2026-01-11 19:10:20,260: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-01-11 19:10:20,263: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-11 19:10:20,263: INFO: common: created directory at: artifacts]
+[2026-01-11 19:11:21,835: WARNING: model_tracking: Could not initialize MLflow: API request to http://localhost:5001/api/2.0/mlflow/experiments/get-by-name failed with exception HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /api/2.0/mlflow/experiments/get-by-name?experiment_name=car_price_prediction (Caused by NewConnectionError("HTTPConnection(host='localhost', port=5001): Failed to establish a new connection: [Errno 111] Connection refused")) - tracking disabled]
+[2026-01-11 19:11:21,836: INFO: common: created directory at: artifacts/training]
+[2026-01-11 19:11:21,836: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-01-11 19:11:21,836: INFO: stage_03_advanced_training: Loading training data]
+[2026-01-11 19:11:21,875: INFO: stage_03_advanced_training: Preprocessing data]
+[2026-01-11 19:11:21,965: INFO: stage_03_advanced_training: Splitting data into train/test sets]
+[2026-01-11 19:11:21,969: INFO: stage_03_advanced_training: Applying feature scaling]
+[2026-01-11 19:11:21,976: INFO: stage_03_advanced_training: Comparing different models]
+[2026-01-11 19:11:21,976: INFO: stage_03_advanced_training: Starting model comparison]
+[2026-01-11 19:11:21,976: INFO: model_comparison: Initialized 4 models: ['linear_regression', 'random_forest', 'xgboost', 'gradient_boosting']]
+[2026-01-11 19:11:21,976: INFO: model_comparison: Evaluating linear_regression...]
+[2026-01-11 19:11:23,466: INFO: model_comparison: linear_regression: CV R² = -0.2312 ± 0.1544, Test R² = -0.1516, RMSE = 18942.70]
+[2026-01-11 19:11:23,471: INFO: model_comparison: Evaluating random_forest...]
+[2026-01-11 19:11:32,241: INFO: model_comparison: random_forest: CV R² = -15.5880 ± 12.0660, Test R² = -38.3133, RMSE = 110679.20]
+[2026-01-11 19:11:32,241: INFO: model_comparison: Evaluating xgboost...]
+[2026-01-11 19:11:32,854: INFO: model_comparison: xgboost: CV R² = -8.3458 ± 12.0360, Test R² = -735.8846, RMSE = 479177.14]
+[2026-01-11 19:11:32,854: INFO: model_comparison: Evaluating gradient_boosting...]
+[2026-01-11 19:11:40,141: INFO: model_comparison: gradient_boosting: CV R² = -11.5678 ± 23.4762, Test R² = -575.3811, RMSE = 423790.51]
+[2026-01-11 19:11:40,142: INFO: model_comparison: Comparison results saved to artifacts/model_comparison/model_comparison.json]
+[2026-01-11 19:11:40,142: INFO: model_comparison: Best model: linear_regression]
+[2026-01-11 19:11:40,142: INFO: stage_03_advanced_training: Best model selected: linear_regression]
+[2026-01-11 19:11:40,142: INFO: model_comparison: Initialized 4 models: ['linear_regression', 'random_forest', 'xgboost', 'gradient_boosting']]
+[2026-01-11 19:11:40,142: INFO: model_comparison: Training linear_regression...]
+[2026-01-11 19:11:40,147: INFO: model_comparison: linear_regression trained successfully]
+[2026-01-11 19:11:40,147: INFO: stage_03_advanced_training: Analyzing feature importance]
+[2026-01-11 19:11:40,147: INFO: stage_03_advanced_training: Analyzing feature importance]
+[2026-01-11 19:11:40,148: INFO: feature_importance: Using linear model coefficients]
+[2026-01-11 19:11:40,150: INFO: feature_importance: Linear coefficients calculated successfully]
+[2026-01-11 19:11:40,150: INFO: feature_importance: Calculating permutation importance]
+[2026-01-11 19:11:40,289: INFO: feature_importance: Permutation importance calculated successfully]
+[2026-01-11 19:11:40,291: INFO: feature_importance: Feature importance saved to artifacts/feature_importance/feature_importance.csv]
+[2026-01-11 19:11:40,292: INFO: feature_importance: Feature importance saved to artifacts/feature_importance/feature_importance.json]
+[2026-01-11 19:11:40,726: INFO: feature_importance: Feature importance plot saved to artifacts/feature_importance/feature_importance_plot.png]
+[2026-01-11 19:11:40,726: INFO: feature_importance: Feature analysis completed successfully]
+[2026-01-11 19:11:40,729: INFO: stage_03_advanced_training: Versioning model]
+[2026-01-11 19:11:40,730: INFO: model_tracking: Model version 3 created]
+[2026-01-11 19:11:40,730: INFO: stage_03_advanced_training: Saving artifacts]
+[2026-01-11 19:11:40,731: INFO: stage_03_advanced_training: Model saved to artifacts/training/model.pkl]
+[2026-01-11 19:11:40,732: INFO: stage_03_advanced_training: Scaler saved to artifacts/training/scaler.pkl]
+[2026-01-11 19:11:40,736: INFO: stage_03_advanced_training: Label encoders saved to artifacts/training/label_encoders.pkl]
+[2026-01-11 19:11:40,736: INFO: stage_03_advanced_training: ==================================================]
+[2026-01-11 19:11:40,736: INFO: stage_03_advanced_training: TRAINING COMPLETED SUCCESSFULLY]
+[2026-01-11 19:11:40,736: INFO: stage_03_advanced_training: ==================================================]
+[2026-01-11 19:11:40,736: INFO: stage_03_advanced_training: Best Model: linear_regression]
+[2026-01-11 19:11:40,736: INFO: stage_03_advanced_training: R² Score: -0.1516]
+[2026-01-11 19:11:40,736: INFO: stage_03_advanced_training: RMSE: $18942.70]
+[2026-01-11 19:11:40,736: INFO: stage_03_advanced_training: MAE: $13334.47]
+[2026-01-11 19:11:40,736: INFO: stage_03_advanced_training: ==================================================]
+[2026-01-11 19:11:40,737: INFO: main: >>>>>> stage Training completed <<<<<<
+
+x==========x]
+[2026-01-11 19:11:40,737: INFO: main: *******************]
+[2026-01-11 19:11:40,737: INFO: main: >>>>>> stage Evaluation stage started <<<<<<]
+[2026-01-11 19:11:40,740: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2026-01-11 19:11:40,743: INFO: common: yaml file: params.yaml loaded successfully]
+[2026-01-11 19:11:40,743: INFO: common: created directory at: artifacts]
+[2026-01-11 19:11:40,743: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-01-11 19:11:40,743: INFO: stage_04_evaluation: Loading data for evaluation]
+[2026-01-11 19:11:40,795: INFO: stage_04_evaluation: Preprocessing data for evaluation]
+[2026-01-11 19:11:40,906: INFO: stage_04_evaluation: Loading model for evaluation]
+[2026-01-11 19:11:40,907: INFO: evaluation: Model loaded from artifacts/training/model.pkl]
+[2026-01-11 19:11:40,908: INFO: evaluation: Scaler loaded from artifacts/training/scaler.pkl]
+[2026-01-11 19:11:40,908: INFO: stage_04_evaluation: Evaluating model]
+[2026-01-11 19:11:40,908: INFO: evaluation: Starting model evaluation]
+[2026-01-11 19:11:40,911: INFO: evaluation: Evaluation metrics: {'MSE': 358825882.9412798, 'RMSE': 18942.699990795394, 'MAE': 13334.470623266645, 'R2': -0.15157182727188712}]
+[2026-01-11 19:11:40,912: INFO: common: json file saved at: scores.json]
+[2026-01-11 19:11:40,912: INFO: stage_04_evaluation: Evaluation completed. Scores: {'MSE': 358825882.9412798, 'RMSE': 18942.699990795394, 'MAE': 13334.470623266645, 'R2': -0.15157182727188712}]
+[2026-01-11 19:11:40,912: INFO: main: >>>>>> stage Evaluation stage completed <<<<<<
+
+x==========x]

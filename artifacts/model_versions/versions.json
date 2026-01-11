@@ -1,0 +1,59 @@
+[
+    {
+        "version": 1,
+        "model_path": "artifacts/training/model.pkl",
+        "metrics": {
+            "mse": 358825882.9412798,
+            "rmse": 18942.699990795394,
+            "mae": 13334.470623266645,
+            "r2": -0.15157182727188712
+        },
+        "params": {
+            "model": "linear_regression",
+            "test_size": 0.2,
+            "random_state": 42,
+            "scaler": "StandardScaler"
+        },
+        "description": "Model: linear_regression",
+        "timestamp": "2026-01-11T19:07:57.923290",
+        "status": "active"
+    },
+    {
+        "version": 2,
+        "model_path": "artifacts/training/model.pkl",
+        "metrics": {
+            "mse": 358825882.9412798,
+            "rmse": 18942.699990795394,
+            "mae": 13334.470623266645,
+            "r2": -0.15157182727188712
+        },
+        "params": {
+            "model": "linear_regression",
+            "test_size": 0.2,
+            "random_state": 42,
+            "scaler": "StandardScaler"
+        },
+        "description": "Model: linear_regression",
+        "timestamp": "2026-01-11T19:09:57.094405",
+        "status": "active"
+    },
+    {
+        "version": 3,
+        "model_path": "artifacts/training/model.pkl",
+        "metrics": {
+            "mse": 358825882.9412798,
+            "rmse": 18942.699990795394,
+            "mae": 13334.470623266645,
+            "r2": -0.15157182727188712
+        },
+        "params": {
+            "model": "linear_regression",
+            "test_size": 0.2,
+            "random_state": 42,
+            "scaler": "StandardScaler"
+        },
+        "description": "Model: linear_regression",
+        "timestamp": "2026-01-11T19:11:40.729960",
+        "status": "active"
+    }
+]

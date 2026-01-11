@@ -1,0 +1,82 @@
+[
+    {
+        "feature": "Prod. year",
+        "importance": 0.3012089528494939,
+        "std": 0.005036822667470721
+    },
+    {
+        "feature": "Airbags",
+        "importance": 0.0860097747838677,
+        "std": 0.006583445001282569
+    },
+    {
+        "feature": "Gear box type",
+        "importance": 0.080075999351604,
+        "std": 0.010916560259558637
+    },
+    {
+        "feature": "Engine volume",
+        "importance": 0.05921160187347074,
+        "std": 0.004551001730082488
+    },
+    {
+        "feature": "Mileage",
+        "importance": 0.05357784924749707,
+        "std": 0.008609816018461863
+    },
+    {
+        "feature": "Fuel type",
+        "importance": 0.037367324676373714,
+        "std": 0.0032354933256374123
+    },
+    {
+        "feature": "Wheel",
+        "importance": 0.037359720574507246,
+        "std": 0.006175839882120721
+    },
+    {
+        "feature": "Cylinders",
+        "importance": 0.007801052170283063,
+        "std": 0.0015095659227247345
+    },
+    {
+        "feature": "Levy",
+        "importance": 0.00681139143923275,
+        "std": 0.002956366191988769
+    },
+    {
+        "feature": "Color",
+        "importance": 0.006218661354840793,
+        "std": 0.006214459216936661
+    },
+    {
+        "feature": "Drive wheels",
+        "importance": 0.0058096480559737705,
+        "std": 0.0018916230875901047
+    },
+    {
+        "feature": "Model",
+        "importance": -0.0008666516361244714,
+        "std": 0.002598991097665891
+    },
+    {
+        "feature": "Manufacturer",
+        "importance": -0.001715606883168941,
+        "std": 0.0009790041517852399
+    },
+    {
+        "feature": "Doors",
+        "importance": -0.008915825839431823,
+        "std": 0.007078978338011285
+    },
+    {
+        "feature": "Category",
+        "importance": -0.010778642046255827,
+        "std": 0.0038754406938894966
+    },
+    {
+        "feature": "Leather interior",
+        "importance": -0.0117961812259054,
+        "std": 0.004441959595497598
+    }
+]

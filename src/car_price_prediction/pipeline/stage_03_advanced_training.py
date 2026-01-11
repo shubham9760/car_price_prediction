@@ -152,22 +152,21 @@ class AdvancedModelTrainingPipeline:
         """Save model and scaler artifacts"""
         logger.info("Saving artifacts")
         
-        # Create directory
-        artifact_dir = Path(training_config.trained_model_path)
-        artifact_dir.mkdir(parents=True, exist_ok=True)
+        # Create directory (trained_model_path is the file path, so use its parent)
+        model_path = Path(training_config.trained_model_path)
+        model_path.parent.mkdir(parents=True, exist_ok=True)
         
         # Save model
-        model_path = artifact_dir / "model.pkl"
         joblib.dump(self.best_model, model_path)
         logger.info(f"Model saved to {model_path}")
         
         # Save scaler
-        scaler_path = artifact_dir / "scaler.pkl"
+        scaler_path = model_path.parent / "scaler.pkl"
         joblib.dump(self.scaler, scaler_path)
         logger.info(f"Scaler saved to {scaler_path}")
         
         # Save label encoders
-        encoders_path = artifact_dir / "label_encoders.pkl"
+        encoders_path = model_path.parent / "label_encoders.pkl"
         joblib.dump(self.label_encoders, encoders_path)
         logger.info(f"Label encoders saved to {encoders_path}")
     
@@ -244,7 +243,8 @@ class AdvancedModelTrainingPipeline:
             logger.info(f"R² Score: {metrics['r2']:.4f}")
             logger.info(f"RMSE: ${metrics['rmse']:.2f}")
             logger.info(f"MAE: ${metrics['mae']:.2f}")
-            logger.info(f"Model Version: {version_info['version']}")
+            if version_info:
+                logger.info(f"Model Version: {version_info['version']}")
             logger.info("=" * 50)
             
             return {
