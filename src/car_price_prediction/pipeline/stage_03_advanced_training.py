@@ -170,11 +170,9 @@ class AdvancedModelTrainingPipeline:
             df = pd.read_csv(prepare_base_model_config.test_data_path)
             
             logger.info("Preprocessing data")
-            df = self.preprocess_data(df)
+            X, y = self.preprocess_data(df)
             
-            # Prepare features and target
-            X = df[prepare_base_model_config.feature_columns]
-            y = df[prepare_base_model_config.target_column]
+            # Prepare features and target - already done in preprocess_data
             
             # Split data with train/test split
             logger.info("Splitting data into train/test sets")
@@ -194,7 +192,7 @@ class AdvancedModelTrainingPipeline:
             # Analyze feature importance
             logger.info("Analyzing feature importance")
             feature_analysis = self.analyze_features(
-                X_test_scaled, y_test, prepare_base_model_config.feature_columns
+                X_test_scaled, y_test, list(X.columns)
             )
             
             # Prepare metrics and parameters for tracking

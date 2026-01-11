@@ -1,82 +1,122 @@
 [
     {
+        "feature": "Price_per_Year",
+        "importance": 3.2657177542366456,
+        "std": 0.043667052625907574
+    },
+    {
         "feature": "Prod. year",
-        "importance": 0.3012089528494939,
-        "std": 0.005036822667470721
+        "importance": 0.1737645262116457,
+        "std": 0.0023914455075140016
     },
     {
-        "feature": "Airbags",
-        "importance": 0.0860097747838677,
-        "std": 0.006583445001282569
+        "feature": "Vehicle_Age",
+        "importance": 0.13031496698266776,
+        "std": 0.0021591737061074892
     },
     {
-        "feature": "Gear box type",
-        "importance": 0.080075999351604,
-        "std": 0.010916560259558637
-    },
-    {
-        "feature": "Engine volume",
-        "importance": 0.05921160187347074,
-        "std": 0.004551001730082488
+        "feature": "Mileage_Age_Interaction",
+        "importance": 0.0002521953542321986,
+        "std": 2.164242577652363e-05
     },
     {
         "feature": "Mileage",
-        "importance": 0.05357784924749707,
-        "std": 0.008609816018461863
+        "importance": 5.7844038999121936e-05,
+        "std": 1.513530714444722e-05
     },
     {
         "feature": "Fuel type",
-        "importance": 0.037367324676373714,
-        "std": 0.0032354933256374123
-    },
-    {
-        "feature": "Wheel",
-        "importance": 0.037359720574507246,
-        "std": 0.006175839882120721
-    },
-    {
-        "feature": "Cylinders",
-        "importance": 0.007801052170283063,
-        "std": 0.0015095659227247345
+        "importance": 2.7077099252614813e-05,
+        "std": 6.914395215893046e-06
     },
     {
         "feature": "Levy",
-        "importance": 0.00681139143923275,
-        "std": 0.002956366191988769
+        "importance": 2.6554767443953686e-05,
+        "std": 6.485963409026285e-06
     },
     {
-        "feature": "Color",
-        "importance": 0.006218661354840793,
-        "std": 0.006214459216936661
+        "feature": "Engine_Cylinders",
+        "importance": 1.9732385812243346e-05,
+        "std": 2.739786769074223e-06
     },
     {
-        "feature": "Drive wheels",
-        "importance": 0.0058096480559737705,
-        "std": 0.0018916230875901047
+        "feature": "Engine volume",
+        "importance": 1.5238795314986842e-05,
+        "std": 1.6486019855927193e-05
     },
     {
         "feature": "Model",
-        "importance": -0.0008666516361244714,
-        "std": 0.002598991097665891
+        "importance": 7.723282413452105e-06,
+        "std": 2.0821434563483355e-06
+    },
+    {
+        "feature": "Color",
+        "importance": 6.313106364863596e-06,
+        "std": 1.3524111250352774e-06
+    },
+    {
+        "feature": "Wheel",
+        "importance": 3.957976031654375e-06,
+        "std": 1.2893316236540167e-06
+    },
+    {
+        "feature": "Premium_Leather",
+        "importance": 2.568662637070229e-06,
+        "std": 8.559453429490506e-07
+    },
+    {
+        "feature": "Cylinders",
+        "importance": 2.3028503657207546e-06,
+        "std": 3.450184084820074e-06
+    },
+    {
+        "feature": "Engine_Size_Category",
+        "importance": 1.9574041609460303e-06,
+        "std": 6.523534599947162e-06
     },
     {
         "feature": "Manufacturer",
-        "importance": -0.001715606883168941,
-        "std": 0.0009790041517852399
-    },
-    {
-        "feature": "Doors",
-        "importance": -0.008915825839431823,
-        "std": 0.007078978338011285
-    },
-    {
-        "feature": "Category",
-        "importance": -0.010778642046255827,
-        "std": 0.0038754406938894966
+        "importance": 1.699117774378589e-06,
+        "std": 2.4200324834678797e-06
     },
     {
         "feature": "Leather interior",
-        "importance": -0.0117961812259054,
-        "std": 0.004441959595497598
+        "importance": 9.58903259529187e-07,
+        "std": 3.2689880203353863e-07
+    },
+    {
+        "feature": "Gear box type",
+        "importance": 4.863211667038847e-07,
+        "std": 1.6465029143089842e-07
+    },
+    {
+        "feature": "Drive wheels",
+        "importance": 4.257907808669081e-07,
+        "std": 4.897720631888815e-06
+    },
+    {
+        "feature": "Doors",
+        "importance": 1.2299510281366112e-07,
+        "std": 5.577941018883509e-07
+    },
+    {
+        "feature": "Mileage_Category",
+        "importance": -1.064042931542275e-08,
+        "std": 3.562162508742547e-08
+    },
+    {
+        "feature": "Category",
+        "importance": -5.461108484983157e-07,
+        "std": 2.57665846968216e-06
+    },
+    {
+        "feature": "Premium_Airbags",
+        "importance": -2.614738888062629e-06,
+        "std": 8.665280090362789e-07
+    },
+    {
+        "feature": "Airbags",
+        "importance": -3.606996212224267e-06,
+        "std": 3.115357057547468e-06
     }
 ]

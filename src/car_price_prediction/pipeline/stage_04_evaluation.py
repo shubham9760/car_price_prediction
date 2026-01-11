@@ -1,55 +1,57 @@
 from car_price_prediction.config.configuration import ConfigurationManager
 from car_price_prediction.components.evaluation import Evaluation
+from car_price_prediction.components.advanced_preprocessing import AdvancedPreprocessor
 from car_price_prediction import logger
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import LabelEncoder
+import joblib
+from pathlib import Path
 
 STAGE_NAME = "Evaluation Stage"
 
 class EvaluationPipeline:
     def __init__(self):
-        pass
+        self.preprocessor = AdvancedPreprocessor()
+        self.label_encoders = None
+        self.scaler = None
 
-    def preprocess_data(self, df: pd.DataFrame):
-        """Preprocess the dataframe"""
-        df = df.copy()
+    def load_preprocessor_state(self):
+        """Load the fitted preprocessor state from training"""
+        training_dir = Path("artifacts/training")
         
-        # Replace '-' with NaN
-        df = df.replace('-', pd.NA)
+        # Load label encoders
+        encoders_path = training_dir / "label_encoders.pkl"
+        if encoders_path.exists():
+            self.label_encoders = joblib.load(encoders_path)
+            self.preprocessor.label_encoders = self.label_encoders
+            logger.info(f"Label encoders loaded from {encoders_path}")
+        else:
+            logger.warning("Label encoders not found, using new instance")
         
-        # Handle categorical columns by label encoding
-        for col in df.columns:
-            if df[col].dtype == 'object':
-                df[col] = df[col].fillna('Unknown')
-                le = LabelEncoder()
-                df[col] = le.fit_transform(df[col].astype(str))
-        
-        # Convert to numeric and fill NaN
-        for col in df.columns:
-            df[col] = pd.to_numeric(df[col], errors='coerce')
-        
-        # Fill remaining NaN with median
-        df = df.fillna(df.median())
-        
-        return df
+        # Load scaler
+        scaler_path = training_dir / "scaler.pkl"
+        if scaler_path.exists():
+            self.scaler = joblib.load(scaler_path)
+            self.preprocessor.scaler = self.scaler
+            logger.info(f"Scaler loaded from {scaler_path}")
+        else:
+            logger.warning("Scaler not found, using new instance")
 
     def main(self):
         config = ConfigurationManager()
         eval_config = config.get_validation_config()
         prepare_base_model_config = config.get_prepare_base_model_config()
         
+        # Load preprocessor state from training
+        self.load_preprocessor_state()
+        
         # Load data
         logger.info("Loading data for evaluation")
         df = pd.read_csv(prepare_base_model_config.test_data_path)
         
-        # Preprocess data
+        # Preprocess data using advanced preprocessing with fitted state
         logger.info("Preprocessing data for evaluation")
-        df = self.preprocess_data(df)
-        
-        # Extract features and target
-        X = df[prepare_base_model_config.feature_columns]
-        y = df[prepare_base_model_config.target_column]
+        X, y = self.preprocessor.preprocess(df, target_col='Price', fit=False)
         
         # Split data
         X_train, X_test, y_train, y_test = train_test_split(
@@ -61,6 +63,7 @@ class EvaluationPipeline:
         evaluation = Evaluation(config=eval_config)
         evaluation.load_model()
         evaluation.load_scaler()
+        evaluation.load_label_encoders()
         
         # Evaluate model
         logger.info("Evaluating model")

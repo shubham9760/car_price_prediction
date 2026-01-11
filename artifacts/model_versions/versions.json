@@ -55,5 +55,43 @@
         "description": "Model: linear_regression",
         "timestamp": "2026-01-11T19:11:40.729960",
         "status": "active"
+    },
+    {
+        "version": 4,
+        "model_path": "artifacts/training/model.pkl",
+        "metrics": {
+            "mse": 129927.7968529969,
+            "rmse": 360.45498589005103,
+            "mae": 222.01689158688396,
+            "r2": 0.9989713178591031
+        },
+        "params": {
+            "model": "gradient_boosting",
+            "test_size": 0.2,
+            "random_state": 42,
+            "scaler": "StandardScaler"
+        },
+        "description": "Model: gradient_boosting",
+        "timestamp": "2026-01-11T19:38:33.618727",
+        "status": "active"
+    },
+    {
+        "version": 5,
+        "model_path": "artifacts/training/model.pkl",
+        "metrics": {
+            "mse": 129927.7968529969,
+            "rmse": 360.45498589005103,
+            "mae": 222.01689158688396,
+            "r2": 0.9989713178591031
+        },
+        "params": {
+            "model": "gradient_boosting",
+            "test_size": 0.2,
+            "random_state": 42,
+            "scaler": "StandardScaler"
+        },
+        "description": "Model: gradient_boosting",
+        "timestamp": "2026-01-11T19:41:01.650555",
+        "status": "active"
     }
 ]

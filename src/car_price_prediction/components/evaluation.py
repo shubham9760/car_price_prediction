@@ -13,6 +13,7 @@ class Evaluation:
         self.config = config
         self.model = None
         self.scaler = None
+        self.label_encoders = None
 
     def load_model(self):
         """Load the trained model"""
@@ -27,6 +28,15 @@ class Evaluation:
             logger.info(f"Scaler loaded from {scaler_path}")
         else:
             logger.warning("Scaler not found, using unscaled data")
+
+    def load_label_encoders(self):
+        """Load the label encoders used during training"""
+        encoders_path = self.config.path_of_model.parent / "label_encoders.pkl"
+        if os.path.exists(encoders_path):
+            self.label_encoders = joblib.load(encoders_path)
+            logger.info(f"Label encoders loaded from {encoders_path}")
+        else:
+            logger.warning("Label encoders not found")
 
     def evaluate(self, X_test, y_test):
         """Evaluate the model on test data"""
@@ -61,3 +71,4 @@ class Evaluation:
         """Save evaluation scores to json file"""
         scores_path = Path("scores.json")
         save_json(scores_path, scores)
+
