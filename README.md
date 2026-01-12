@@ -1,20 +1,3 @@
-Metadata-Version: 2.4
-Name: car_price_prediction
-Version: 0.0.0
-Summary: A small python package for CNN app
-Home-page: https://github.com/entbshubham9760appy/car_price_prediction
-Author: entbshubham9760appy
-Author-email: 9760ssingh@gmail.com
-Project-URL: Bug Tracker, https://github.com/entbshubham9760appy/car_price_prediction/issues
-License-File: LICENSE
-Dynamic: author
-Dynamic: author-email
-Dynamic: description
-Dynamic: home-page
-Dynamic: license-file
-Dynamic: project-url
-Dynamic: summary
-
 # Car Price Prediction
 
 A machine learning project for predicting car prices using advanced preprocessing, multiple model comparison, and comprehensive evaluation.
