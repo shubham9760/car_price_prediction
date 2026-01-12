@@ -150,5 +150,24 @@
         "description": "Model: gradient_boosting",
         "timestamp": "2026-01-12T18:22:23.642241",
         "status": "active"
+    },
+    {
+        "version": 9,
+        "model_path": "artifacts/training/model.pkl",
+        "metrics": {
+            "mse": 129927.7968529969,
+            "rmse": 360.45498589005103,
+            "mae": 222.01689158688396,
+            "r2": 0.9989713178591031
+        },
+        "params": {
+            "model": "gradient_boosting",
+            "test_size": 0.2,
+            "random_state": 42,
+            "scaler": "StandardScaler"
+        },
+        "description": "Model: gradient_boosting",
+        "timestamp": "2026-01-12T18:44:29.977856",
+        "status": "active"
     }
 ]
